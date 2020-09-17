@@ -1,0 +1,38 @@
+﻿@page
+@model KinderGardenApp.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<h3>Дали сте сигурни дека сакате да го избришете детето од евиденција?</h3>
+<div>
+    <h4>Дете</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Име 
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Kid.FirstName @Model.Kid.LastName
+        </dd>
+        <dt class="col-sm-2">
+            Години
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Kid.Age
+        </dd>
+        <dt class="col-sm-2">
+            Датум на апликација
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Kid.AplicationDate
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Kid.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./ListApplications">Назат кон листа на деца</a>
+    </form>
+</div>

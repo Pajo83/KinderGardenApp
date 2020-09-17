@@ -1,0 +1,59 @@
+﻿@page
+@model KinderGardenApp.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<table id="tabledetais" class="table table-bordered table-striped">
+
+
+    <thead>
+
+        <tr>
+            <th>Име на дете</th>
+            <th>Презиме на дете</th>
+            <th>Години</th>
+            <th>Дата</th>
+            <th>Име на Татко</th>
+            <th>Име на Мајка</th>
+            <th>Општина</th>
+            <th>Конткт тел.</th>
+            <th>Електронска пошта</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Kid.FirstName
+            </td>
+            <td>
+                @Model.Kid.LastName
+            </td>
+            <td>
+                @Model.Kid.Age
+            </td>
+            <td>
+                @Model.Kid.AplicationDate
+            </td>
+            <td>
+                @Model.Parent.ImeTatko
+            </td>
+            <td>
+                @Model.Parent.ImeMajka
+            </td>
+            <td>
+                @Model.Parent.Municipality
+            </td>
+            <td>
+                @Model.Parent.PhoneNumber
+            </td>
+            <td>
+                @Model.Parent.Email
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<a asp-page="@Model.returnPage" class="btn btn-primary">Кон листа на деца</a>
