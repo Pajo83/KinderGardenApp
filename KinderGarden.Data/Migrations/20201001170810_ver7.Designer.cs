@@ -4,14 +4,16 @@ using KinderGarden.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KinderGarden.Data.Migrations
 {
     [DbContext(typeof(KindergardenDbContext))]
-    partial class KindergardenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201001170810_ver7")]
+    partial class ver7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,10 +1,10 @@
 ﻿@page
-@model KinderGardenApp.AcceptedModel
+@model KinderGardenApp.DeniedListModel
 @{
-    ViewData["Title"] = "Accepted";
+    ViewData["Title"] = "Листа на одбиени деца";
 }
 
-<h1>Примени</h1>
+<h1>Листа на одбиени деца</h1>
 
 <table id="mytable" class="table table-bordred table-striped">
 
@@ -14,7 +14,7 @@
             <th>Име</th>
             <th>Презиме</th>
             <th>Години</th>
-            <th>Дата на алицирање</th>
+            <th>Дата на аплицирање</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -35,8 +35,9 @@
                     @Html.DisplayFor(modelItem => kid.AplicationDate)
                 </td>
                 <td>
+                    <a asp-page="/ListApplications/Accept" asp-route-kidId="@kid.Id"><button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></a>
                     <a asp-page="/ListApplications/Delete" asp-route-kidId="@kid.Id"><button class="btn btn-danger btn-sm"><i class="fa fa-window-close"></i></button></a>
-                    <a asp-page="/ListApplications/Details" asp-route-returnPage="accepted" asp-route-id="@kid.Id"><button class="btn btn-info btn-sm"><i class="fa fa-search"></i></button></a>
+                    <a asp-page="/ListApplications/Details" asp-route-returnPage="denied" asp-route-id="@kid.Id"><button class="btn btn-info btn-sm"><i class="fa fa-search"></i></button></a>
                 </td>
             </tr>
         }

@@ -18,6 +18,8 @@ namespace KinderGardenApp
         }
         [BindProperty]
         public Kid Kid { get; set; }
+        [BindProperty]
+        public Kindergardens Kindergarden { get; set; }
         
         [BindProperty]
         public Parents Parent { get; set; }
@@ -26,13 +28,29 @@ namespace KinderGardenApp
 
         public IActionResult OnGet(string returnPage, int id)
         {
+            if (Program.loggedUser == false)
+            {
+                return RedirectToPage("./NotFound");
+            }
+
             Kid = _context.Kids.Where(k => k.Id == id).First(); 
             if (Kid == null)
             {
                 return RedirectToPage("./NotFound");
             }
             Parent = _context.Parents.Where(p => p.Id == Kid.ParentId).First();
-            this.returnPage = returnPage == "accepted" ? "./Accepted" : "./ListApplications";
+            Kindergarden = _context.Kindergardens.Where(k => k.Id == Kid.KindergardenId).First();
+            if (returnPage == "accepted")
+            {
+                this.returnPage = "./Accepted";
+            } else if(returnPage == "denied")
+            {
+                this.returnPage = "./DeniedList";
+
+            } else
+            {
+                this.returnPage = "./ListApplications";
+            }
             return Page();
         }
         

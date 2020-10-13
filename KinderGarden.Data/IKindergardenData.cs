@@ -7,15 +7,17 @@ namespace KinderGarden.Data
 {
     public interface IKindergardenData
     {
-        IEnumerable<Kindergarden> GetKindergardens();
+        IEnumerable<Kindergardens> GetKindergardens();
         int Count();
-        Kindergarden GetKindergardenById(int kinderGardenId);
+        Kindergardens GetKindergardenById(int kinderGardenId);
         Kid GetKidById(int kidId);
-        Kindergarden GetKindergardenByName(string kindergardenName);
-        Kindergarden Update(Kindergarden kindergarden);
+        Parents GetParentById(int parentId);
+        Kindergardens GetKindergardenByName(string kindergardenName);
+        Kindergardens Update(Kindergardens kindergarden);
         int Commit();
-        Kindergarden Create(Kindergarden kindergarden);
-        Kindergarden Delete(int kinderGardenId);
+        Kindergardens Create(Kindergardens kindergarden);
+        Kindergardens Delete(int kinderGardenId);
         Kid DeleteKid(int kidId);
+        bool CheckLogIn(string username, string password);
     }
 }

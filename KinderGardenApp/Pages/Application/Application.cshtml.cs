@@ -6,40 +6,47 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using KinderGarden.Core;
 using KinderGarden.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace KinderGardenApp
 {
     public class ApplicationModel : PageModel
     {
         private readonly KinderGarden.Data.KindergardenDbContext _context;
-        public ApplicationModel(KinderGarden.Data.KindergardenDbContext context)
+        public IConfiguration Configuration { get; }
+        public ApplicationModel(KinderGarden.Data.KindergardenDbContext context, IConfiguration configuration)
         {
             _context = context;
-            this.saved = false;
+            this.Saved = false;
+            Configuration = configuration;
         }
         [BindProperty]
-        public  Kid kid { get; set; }
+        public  Kid Kid { get; set; }
         [BindProperty]
-        public Parents parent { get; set; }
-        public bool saved { get; set; }
+        public Parents Parent { get; set; }
+        public bool Saved { get; set; }
+        public SelectList kindergardens;
+
         public void OnGet()
         {
-
+            kindergardens = new SelectList(_context.Kindergardens, "Id", "Name");
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost([Bind] Kid kidUpdate)
         {
             var found = false;
-            kid.AplicationDate = DateTime.Now;
+            kidUpdate.AplicationDate = DateTime.Now;
+            kidUpdate.KindergardenId = Kid.KindergardenId;
             try
             {
-                Parents parentFound = _context.Parents.Where(p => p.Email == parent.Email).First();
+                Parents parentFound = _context.Parents.Where(p => p.Email == Parent.Email).First();
                 if(parentFound!=null)
                 {
                     if(parentFound.kids == null)
                     {
                         parentFound.kids = new List<Kid>();
                     }
-                    parentFound.kids.Add(kid);
+                    parentFound.kids.Add(kidUpdate);
                     found = true;
                     _context.SaveChanges();
                 }
@@ -50,11 +57,13 @@ namespace KinderGardenApp
                 //
             }
             if(found==false){
-                parent.kids = new List<Kid> { kid };
-                _context.Add(parent);
+                Parent.kids = new List<Kid> { kidUpdate };
+                _context.Add(Parent);
                 _context.SaveChanges();
             }
-            saved = true;
+            Saved = true;
+            MailHelper mailHelper = new MailHelper(Configuration);
+            mailHelper.SendApplicationReceived(kidUpdate.Parent.Email, kidUpdate.Parent.ImeTatko + " " + kidUpdate.Parent.ImeMajka + " " + kidUpdate.LastName);
             return Page();
         }
     }

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderGardenApp", "KinderGardenApp\KinderGardenApp.csproj", "{4BB29F06-160E-48C8-8FAB-30CD0ADA5353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KinderGardenApp", "KinderGardenApp\KinderGardenApp.csproj", "{4BB29F06-160E-48C8-8FAB-30CD0ADA5353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderGarden.Data", "KinderGarden.Data\KinderGarden.Data.csproj", "{08CF5AE5-430C-45C9-B08A-31894FE2BB7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KinderGarden.Data", "KinderGarden.Data\KinderGarden.Data.csproj", "{08CF5AE5-430C-45C9-B08A-31894FE2BB7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderGarden.Core", "KinderGarden.Core\KinderGarden.Core.csproj", "{765A75A9-8B72-4205-8F92-9D02D17DC5D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KinderGarden.Core", "KinderGarden.Core\KinderGarden.Core.csproj", "{765A75A9-8B72-4205-8F92-9D02D17DC5D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

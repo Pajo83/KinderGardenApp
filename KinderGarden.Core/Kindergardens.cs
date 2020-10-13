@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KinderGarden.Core
 {
-    public class Kindergarden
+    public class Kindergardens
     {
         public int Id { get; set; }
         public string Name{ get; set; }

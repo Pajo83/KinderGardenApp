@@ -4,16 +4,16 @@
     ViewData["Title"] = "ListAplication";
 }
 
-<h1>ListAplication</h1>
+<h1>Листа на апликанти</h1>
 <table id="mytable" class="table table-bordred table-striped">
 
     <thead>
 
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
-            <th>DateTime</th>
+            <th>Име</th>
+            <th>Презиме</th>
+            <th>Години</th>
+            <th>Дата на аплицирање</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -35,7 +35,7 @@
             </td>
             <td>
                 <a asp-page="/ListApplications/Accept" asp-route-kidId="@kid.Id"><button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></a>
-                    <a asp-page="/ListApplications/Delete" asp-route-kidId="@kid.Id"><button class="btn btn-danger btn-sm"><i class="fa fa-window-close"></i></button></a>
+                    <a asp-page="/ListApplications/Denied" asp-route-kidId="@kid.Id"><button class="btn btn-danger btn-sm"><i class="fa fa-window-close"></i></button></a>
                     <a asp-page="/ListApplications/Details" asp-route-id="@kid.Id"><button class="btn btn-info btn-sm"><i class="fa fa-search"></i></button></a>
             </td>
         </tr>

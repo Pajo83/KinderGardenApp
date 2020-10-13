@@ -4,14 +4,16 @@ using KinderGarden.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KinderGarden.Data.Migrations
 {
     [DbContext(typeof(KindergardenDbContext))]
-    partial class KindergardenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200925144215_ver6")]
+    partial class ver6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,7 +86,7 @@ namespace KinderGarden.Data.Migrations
                     b.ToTable("Kids");
                 });
 
-            modelBuilder.Entity("KinderGarden.Core.Kindergardens", b =>
+            modelBuilder.Entity("KinderGarden.Core.Kindergarden", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,30 +136,9 @@ namespace KinderGarden.Data.Migrations
                     b.ToTable("Parents");
                 });
 
-            modelBuilder.Entity("KinderGarden.Core.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("KinderGarden.Core.Group", b =>
                 {
-                    b.HasOne("KinderGarden.Core.Kindergardens", "Kindergarden")
+                    b.HasOne("KinderGarden.Core.Kindergarden", "Kindergarden")
                         .WithMany("groups")
                         .HasForeignKey("KindergardenId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -170,7 +151,7 @@ namespace KinderGarden.Data.Migrations
                         .WithMany("kids")
                         .HasForeignKey("GroupId");
 
-                    b.HasOne("KinderGarden.Core.Kindergardens", "Kindergarden")
+                    b.HasOne("KinderGarden.Core.Kindergarden", "Kindergarden")
                         .WithMany()
                         .HasForeignKey("KindergardenId");
 

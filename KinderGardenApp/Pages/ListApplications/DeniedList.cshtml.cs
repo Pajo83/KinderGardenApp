@@ -9,11 +9,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace KinderGardenApp
 {
-    public class AcceptedModel : PageModel
+    public class DeniedListModel : PageModel
     {
         private readonly KinderGarden.Data.KindergardenDbContext _context;
       
-        public AcceptedModel(KinderGarden.Data.KindergardenDbContext context)
+        public DeniedListModel(KinderGarden.Data.KindergardenDbContext context)
         {
             _context = context;
         }
@@ -24,10 +24,9 @@ namespace KinderGardenApp
         {
             if (Program.loggedUser == false)
             {
-                Response.Redirect("./NotFound");
+                 RedirectToPage("./NotFound");
             }
-
-            kids = _context.Kids.Where(k => k.Status == Statuses.Primen).ToList<Kid>();
+            kids = _context.Kids.Where(k => k.Status == Statuses.Odbien).ToList<Kid>();
 
            
         }

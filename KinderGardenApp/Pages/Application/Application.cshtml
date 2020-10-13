@@ -5,62 +5,72 @@
 }
 
 <h1>Апликација</h1>
-@if (Model.saved == false)
+@if (Model.Saved == false)
 {
-
-
 <form method="post">
     <div class="row">
         <div id="" class="col-sm-4">
             <label>Име на Дете: </label>
             <div class="clearfix"></div>
-            <input asp-for="kid.FirstName" id="FirstName" name="FirstName" type="text" />
+            <input asp-for="Kid.FirstName" id="FirstName" class="form-control" name="FirstName" type="text" />
         </div>
         <div id="" class="col-sm-4">
             <label>Презиме на Дете: </label>
             <div class="clearfix"></div>
-            <input asp-for="kid.LastName" id="LastName" name="LastName" type="text" />
+            <input asp-for="Kid.LastName" id="LastName" class="form-control" name="LastName" type="text" />
         </div>
         <div id="" class="col-sm-4">
             <label>Години: </label>
             <div class="clearfix"></div>
-            <input asp-for="kid.Age" id="Age" name="Age" type="number" />
+            <input asp-for="Kid.Age" id="Age" class="form-control" name="Age" type="number" />
         </div>
     </div>
     <div class="row">
         <div id="" class="col-sm-4">
             <label>Име на татко: </label>
             <div class="clearfix"></div>
-            <input asp-for="parent.ImeTatko" id="ImeTatko" name="ImeTatko" type="text" />
+            <input asp-for="Parent.ImeTatko" id="ImeTatko" class="form-control" name="ImeTatko" type="text" />
         </div>
         <div id="" class="col-sm-4">
             <label>Име на мајка: </label>
             <div class="clearfix"></div>
-            <input asp-for="parent.ImeMajka" id="ImeMajka" name="ImeMajka" type="text" />
+            <input asp-for="Parent.ImeMajka" id="ImeMajka" class="form-control" name="ImeMajka" type="text" />
         </div>
         <div id="" class="col-sm-4">
             <label>Контакт тел:</label>
             <div class="clearfix"></div>
-            <input asp-for="parent.PhoneNumber" id="PhoneNumber" name="PhoneNumber" type="number" />
+            <input asp-for="Parent.PhoneNumber" id="PhoneNumber" class="form-control" name="PhoneNumber" type="number" />
         </div>
     </div>
     <div class="row">
         <div id="" class="col-sm-4">
             <label>Адреса: </label>
             <div class="clearfix"></div>
-            <input asp-for="parent.Adress" id="Adress" name="Adress" type="text" />
+            <input asp-for="Parent.Adress" id="Adress" class="form-control" name="Adress" type="text" />
         </div>
         <div id="" class="col-sm-4">
             <label>Општина: </label>
             <div class="clearfix"></div>
-           <input asp-for="parent.Municipality" id="Municipality" name="Municipality" type="text" />
+           <input asp-for="Parent.Municipality" id="Municipality" class="form-control" name="Municipality" type="text" />
         </div>
         <div id="" class="col-sm-4">
             <label>Email: </label>
             <div class="clearfix"></div>
-            <input asp-for="parent.Email" id="Email" name="Email" type="text" />
+            <input asp-for="Parent.Email" id="Email" class="form-control" name="Email" type="text" />
         </div>
-
+        
+    </div>
+    <div class="row">
+        <div id="" class="col-sm-4">
+            <div class="form-group">
+                <label>Локација: </label>
+                <div class="clearfix"></div>
+                <select asp-for="@Model.Kid.KindergardenId" class="form-control"
+                        asp-items="@Model.kindergardens">
+                    <option value="">-- Избери локација --</option>
+                </select>
+            </div>
+        </div>
     </div>
     <button type="submit" class="btn btn-primary">Аплицирај</button>
 </form>

@@ -8,6 +8,8 @@ namespace KinderGarden.Core
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public double Age { get; set; }
+        public Kindergardens Kindergarden { get; set; }
+        public int? KindergardenId { get; set; }
         public Group Group { get; set; }
         public int? GroupId { get; set; }
         public Parents Parent { get; set;}

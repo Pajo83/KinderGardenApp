@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Детали</h1>
 <table id="tabledetais" class="table table-bordered table-striped">
 
 
@@ -14,6 +14,7 @@
             <th>Име на дете</th>
             <th>Презиме на дете</th>
             <th>Години</th>
+            <th>Објект</th>
             <th>Дата</th>
             <th>Име на Татко</th>
             <th>Име на Мајка</th>
@@ -33,6 +34,9 @@
             </td>
             <td>
                 @Model.Kid.Age
+            </td>
+            <td>
+                @Model.Kindergarden.Name
             </td>
             <td>
                 @Model.Kid.AplicationDate

@@ -1,0 +1,24 @@
+﻿@page
+@model KinderGardenApp.LogInModel
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+<h1>Кон деца</h1>
+<form method="post">
+    <div class="row">
+        <div id="" class="col-sm-4">
+            <label>Е-mail: </label>
+            <div class="clearfix"></div>
+            <input asp-for="User.Email" id="Email" name="Email" type="text" />
+        </div>
+        <div id="" class="col-sm-4">
+            <label>Лозинка: </label>
+            <div class="clearfix"></div>
+            <input asp-for="User.Password" id="Password" name="Password" type="password" />
+        </div>
+        <div id="" class="col-sm-4">
+            <button type="submit" class="btn btn-primary">Најави се</button>
+        </div>
+    </div>
+</form>

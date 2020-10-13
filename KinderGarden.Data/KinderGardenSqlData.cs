@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace KinderGarden.Data
 {
@@ -23,13 +25,13 @@ namespace KinderGarden.Data
             return kindergardenDb.Kindergardens.Count();
         }
 
-        public Kindergarden Create(Kindergarden kindergarden)
+        public Kindergardens Create(Kindergardens kindergarden)
         {
             kindergardenDb.Kindergardens.Add(kindergarden);
             return kindergarden;
         }
 
-        public Kindergarden Delete(int kinderGardenId)
+        public Kindergardens Delete(int kinderGardenId)
         {
             throw new NotImplementedException();
         }
@@ -49,26 +51,41 @@ namespace KinderGarden.Data
             return kindergardenDb.Kids.Where(k => k.Id == kidId).Single();
         }
 
-        public Kindergarden GetKindergardenById(int kinderGardenId)
+        public Parents GetParentById(int parentId)
+        {
+            return kindergardenDb.Parents.Where(p => p.Id == parentId).Single();
+        }
+
+        public Kindergardens GetKindergardenById(int kinderGardenId)
         {
             throw new NotImplementedException();
         }
 
-        public Kindergarden GetKindergardenByName(string kindergardenName)
+        public Kindergardens GetKindergardenByName(string kindergardenName)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Kindergarden> GetKindergardens()
+        public IEnumerable<Kindergardens> GetKindergardens()
         {
             throw new NotImplementedException();
         }
 
-        public Kindergarden Update(Kindergarden kindergarden)
+        public Kindergardens Update(Kindergardens kindergarden)
         {
             throw new NotImplementedException();
         }
-        
 
+        public bool CheckLogIn(string username, string password )
+        {
+            using (SHA256 mySHA256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes(password);
+                password = mySHA256.ComputeHash(bytes).ToString();
+                   
+            }
+            var user = kindergardenDb.Users.Where(u => u.Email == username && u.Password == password).Any();
+            return user == null ? false : true;
+        }
     }
 }

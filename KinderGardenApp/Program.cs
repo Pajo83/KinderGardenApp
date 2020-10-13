@@ -11,6 +11,7 @@ namespace KinderGardenApp
 {
     public class Program
     {
+        public static bool loggedUser = false;
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

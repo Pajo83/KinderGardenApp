@@ -13,11 +13,11 @@ namespace KinderGarden.Data
 
         }
 
-        public DbSet<Kindergarden> Kindergardens { get; set; }
+        public DbSet<Kindergardens> Kindergardens { get; set; }
         public DbSet<Parents> Parents { get; set; }
         public DbSet<Kid> Kids{ get; set; }
         public DbSet<Group> Groups { get; set; }
-   
+        public DbSet<User> Users { get; set; }
     }
 }
 

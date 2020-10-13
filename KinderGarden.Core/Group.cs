@@ -12,7 +12,7 @@ namespace KinderGarden.Core
         public GroupType? Type { get; set; }
         public string Name { get; set; }
         public List<Kid> kids { get; set; }
-        public Kindergarden Kindergarden { get; set; }
+        public Kindergardens Kindergarden { get; set; }
         public int KindergardenId { get; set; }
         
     }
